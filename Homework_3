@@ -1,0 +1,78 @@
+# Write a program that allows the user to enter five numbers (read as strings). Create a
+# string that consists of the user’s numbers separated by plus signs. For instance, if the user enters
+# 2, 5, 11, 33, and 55, then the string should be ‘2+5+11+33+55’.
+
+entered_numbers = input("Enter five numbers separated by comma: ")
+created_string = entered_numbers.replace(",", "+")
+print(created_string)
+
+# Write a program that gets a string from the user containing
+# a potential telephone number. The program should print Valid if
+# it decides the phone number is a real phone number, and Invalid
+# otherwise. A phone number is considered valid as long as it is written in
+# the form abc-def-hijk or 1-abc-def-hijk. The dashes must be included, the phone
+# number should contain only numbers and dashes, and the number of digits in each group
+# must be correct. Test your program with the output shown below.
+
+phone_number = input("Enter telephone number: ")
+if phone_number[3:8:4] == "--" and len(phone_number) == 12 and phone_number.replace("-", "").isdigit():
+    print("Valid number.")
+
+elif (phone_number[1:10:4] == "---" and len(phone_number) == 14 and phone_number[0] == "1"
+      and phone_number.replace("-", "").isdigit()):
+    print("Valid number.")
+else:
+    print("Invalid number.")
+
+# Write a program that implements the Caesar cipher, a simple encryption technique where each letter in the plaintext
+# is shifted a certain number of places down the alphabet.
+
+alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P",
+            "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+entered_word = input("Enter a word: ")
+converted_word = list(entered_word)
+for i in range(len(entered_word)):
+    if entered_word[i] == "A":
+        converted_word[i] = alphabet[-3]
+    if entered_word[i] == "B":
+        converted_word[i] = alphabet[-2]
+    if entered_word[i] == "C":
+        converted_word[i] = alphabet[-1]
+    if entered_word[i] not in "ABC":
+        converted_word[i] = alphabet[alphabet.index(converted_word[i]) - 3]
+print("".join(converted_word))
+
+
+# Write a program that accepts a string from the user and removes
+# all duplicates. The resulting string should contain only unique characters.
+
+entered_sting = input("Enter a word: ")
+new_string = ""
+
+for i in range(len(entered_sting)):
+    if entered_sting[i] not in new_string:
+        new_string += entered_sting[i]
+print(new_string)
+
+# Write a program that calculates the Fibonacci sequence. The Fibonacci sequence is a series
+# of numbers where each number is the sum of the two numbers preceding it. The first two numbers are 0 and 1,
+# and the sequence goes 0, 1, 1, 2, 3, 5, 8, 13, 21, and so on.
+
+fib_length = int(input("Enter length of Fibonacci sequence: "))
+fib_1 = 0
+fib_2 = 1
+fib_sequence = [0, 1]
+for i in range(fib_length-2):
+    fib_res = fib_1 + fib_2
+    fib_1, fib_2 = fib_2, fib_res
+    fib_sequence.append(fib_res)
+print(fib_sequence)
+
+
+
+
+
+
+
+
+
